@@ -15,7 +15,15 @@ from collections import Counter
 from sklearn.preprocessing import OrdinalEncoder
 import json
 import datetime
+import mlflow
 
+remote_server_uri = "http://localhost:8088"
+mlflow.set_tracking_uri(remote_server_uri)
+
+# set experiment
+mlflow.set_experiment("experiment_01")
+
+mlflow.sklearn.autolog()
 # load data
 input_file = ("dpe_tertiaire_20240307.csv")
 data = pd.read_csv("dpe_tertiaire_20240307.csv")
